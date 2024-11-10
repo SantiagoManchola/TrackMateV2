@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TrackMate</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Iniciar Sesión</string>
+    <string name="title_notifications">Registrarse</string>
+    <string name="title_homepage">Homepage</string>
+</resources>

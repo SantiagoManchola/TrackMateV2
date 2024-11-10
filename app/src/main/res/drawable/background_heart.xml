@@ -1,0 +1,5 @@
+<!-- res/drawable/background_heart.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#99FFFFFF" /> <!-- Blanco con 60% de opacidad -->
+    <corners android:radius="10dp" /> <!-- Border radius de 10dp -->
+</shape>
