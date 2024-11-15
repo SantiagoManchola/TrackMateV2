@@ -18,9 +18,17 @@ class HomepageFragment : Fragment() {
 
         // Obtén la referencia al ícono de corazón en tu layout
         val heartIcon: ImageView = view.findViewById(R.id.iv_heart)
+        val heartIcon2: ImageView = view.findViewById(R.id.iv_heart2)
+        val heartIcon3: ImageView = view.findViewById(R.id.iv_heart3)
 
         // Asigna el listener de clic para cambiar el ícono
         heartIcon.setOnClickListener {
+            toggleHeart(it)
+        }
+        heartIcon2.setOnClickListener {
+            toggleHeart(it)
+        }
+        heartIcon3.setOnClickListener {
             toggleHeart(it)
         }
 

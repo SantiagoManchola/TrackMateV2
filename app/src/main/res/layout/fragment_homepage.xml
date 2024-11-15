@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:padding="16dp">
 
         <!-- Botón de Salir -->
+
         <Button
             android:id="@+id/btn_salir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="REGRESAR"
-            android:backgroundTint="#65558F"
-            android:textColor="#FFFFFF"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="8dp"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#65558F"
+            android:text="REGRESAR"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:text="TrackMate"
+            android:textColor="#333"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <!-- Contenedor de Ubicación y Búsqueda -->
         <LinearLayout
             android:id="@+id/ubicacion_busqueda_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_below="@id/btn_salir"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:orientation="vertical"
             android:padding="8dp">
 
             <!-- Texto de ubicación -->
@@ -38,29 +53,32 @@
                 android:id="@+id/tv_ubicacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
                 android:text="Ubicación"
-                android:textSize="16sp"
-                android:layout_gravity="start"/>
+                android:textSize="16sp" />
 
             <!-- Icono de ubicación y ciudad -->
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp"
                 android:layout_gravity="start"
-                android:gravity="center_vertical">
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_location"
                     android:tint="@color/red" />
+
                 <TextView
                     android:id="@+id/tv_ciudad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ibagué, Tolima"
-                    android:layout_marginStart="4dp"/>
+                    android:layout_marginStart="4dp"
+                    android:text="Ibagué, Tolima" />
             </LinearLayout>
 
             <!-- Buscador de rutas -->
@@ -68,11 +86,11 @@
                 android:id="@+id/et_busqueda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="¿A dónde vas?"
-                android:drawableEnd="@drawable/ic_search"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/search_background"
-                android:padding="12dp"
-                android:layout_marginTop="20dp"/>
+                android:drawableEnd="@drawable/ic_search"
+                android:hint="¿A dónde vas?"
+                android:padding="12dp" />
         </LinearLayout>
 
         <!-- Sección de Lugares Recientes -->
@@ -80,23 +98,23 @@
             android:id="@+id/tv_lugares_recientes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lugares Recientes"
-            android:textStyle="bold"
             android:layout_below="@id/ubicacion_busqueda_container"
+            android:text="Lugares Recientes"
+            android:textColor="#333333"
             android:textSize="16sp"
-            android:textColor="#333333"/>
+            android:textStyle="bold" />
 
         <!-- Botón Ver Todos -->
         <TextView
             android:id="@+id/tv_ver_todo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ver Todo"
-            android:layout_alignParentEnd="true"
             android:layout_alignBaseline="@id/tv_lugares_recientes"
-            android:textColor="#6A1B9A"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
             android:padding="8dp"
-            android:clickable="true"/>
+            android:text="Ver Todo"
+            android:textColor="#6A1B9A" />
 
         <!-- Scroll Horizontal para Lugares Recientes en formato horizontal -->
         <HorizontalScrollView
@@ -116,18 +134,18 @@
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/recent_item_background">
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
                     <!-- Imagen del mapa -->
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/map"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="8dp"/>
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/map" />
 
                     <!-- Contenedor de texto -->
                     <LinearLayout
@@ -139,39 +157,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Villa Restrepo"
-                            android:textStyle="bold"
                             android:textColor="#333333"
-                            android:textSize="14sp"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_location"/>
+                                android:src="@drawable/ic_location" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ibagué"
                                 android:layout_marginStart="4dp"
+                                android:text="Ibagué"
                                 android:textColor="#666666"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <!-- Botón Ver -->
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ver"
+                            android:layout_marginTop="8dp"
                             android:backgroundTint="#34C759"
+                            android:text="Ver"
                             android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:layout_marginTop="8dp"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -179,17 +197,17 @@
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/recent_item_background">
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/map"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="8dp"/>
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/map" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -200,38 +218,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Universidad de Ibagué"
-                            android:textStyle="bold"
                             android:textColor="#333333"
-                            android:textSize="14sp"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_location"/>
+                                android:src="@drawable/ic_location" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ibagué"
                                 android:layout_marginStart="4dp"
+                                android:text="Ibagué"
                                 android:textColor="#666666"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ver"
+                            android:layout_marginTop="8dp"
                             android:backgroundTint="#34C759"
+                            android:text="Ver"
                             android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:layout_marginTop="8dp"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -239,17 +257,17 @@
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/recent_item_background">
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/map"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="8dp"/>
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/map" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -260,38 +278,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Universidad de Ibagué"
-                            android:textStyle="bold"
                             android:textColor="#333333"
-                            android:textSize="14sp"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_location"/>
+                                android:src="@drawable/ic_location" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ibagué"
                                 android:layout_marginStart="4dp"
+                                android:text="Ibagué"
                                 android:textColor="#666666"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ver"
+                            android:layout_marginTop="8dp"
                             android:backgroundTint="#34C759"
+                            android:text="Ver"
                             android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:layout_marginTop="8dp"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -299,17 +317,17 @@
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/recent_item_background">
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/map"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="8dp"/>
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/map" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -320,38 +338,38 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Universidad de Ibagué"
-                            android:textStyle="bold"
                             android:textColor="#333333"
-                            android:textSize="14sp"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_location"/>
+                                android:src="@drawable/ic_location" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ibagué"
                                 android:layout_marginStart="4dp"
+                                android:text="Ibagué"
                                 android:textColor="#666666"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ver"
+                            android:layout_marginTop="8dp"
                             android:backgroundTint="#34C759"
+                            android:text="Ver"
                             android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:layout_marginTop="8dp"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -366,24 +384,25 @@
             android:id="@+id/tv_populares_ahora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Populares Ahora"
-            android:textStyle="bold"
             android:layout_below="@id/tv_scrollHorizontal"
             android:layout_marginTop="24dp"
+            android:text="Populares Ahora"
+            android:textColor="#333333"
             android:textSize="16sp"
-            android:textColor="#333333"/>
+            android:textStyle="bold" />
 
         <!-- Botón Ver Todos para Populares Ahora -->
+
         <TextView
             android:id="@+id/tv_ver_todo_populares"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ver Todo"
-            android:layout_alignParentEnd="true"
             android:layout_alignBaseline="@id/tv_populares_ahora"
-            android:textColor="#6A1B9A"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
             android:padding="8dp"
-            android:clickable="true"/>
+            android:text="Ver Todo"
+            android:textColor="#6A1B9A" />
 
         <!-- Scroll Horizontal para Populares Ahora sin barra de desplazamiento -->
         <HorizontalScrollView
@@ -399,11 +418,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <!-- Ejemplo de item de popular ahora -->
                 <RelativeLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/recent_item_background"
                     android:padding="8dp">
 
                     <!-- Imagen del lugar popular -->
@@ -412,109 +433,344 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/map2"/>
+                        android:src="@drawable/map2" />
 
                     <!-- Corazón en la esquina superior derecha de la imagen -->
                     <ImageView
                         android:id="@+id/iv_heart"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_heart_outline"
-                        android:background="@drawable/background_heart"
-                        android:padding="10dp"
                         android:layout_alignParentEnd="true"
                         android:layout_margin="8dp"
-                        android:onClick="toggleHeart"/>
+                        android:background="@drawable/background_heart"
+                        android:onClick="toggleHeart"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_heart_outline" />
 
                     <!-- Nombre de la persona sobre la imagen -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="#00FFFFFF"
-                        android:padding="4dp"
                         android:layout_alignBottom="@id/iv_popular_image"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginStart="8dp"
-                        android:gravity="center_vertical">
+                        android:layout_marginBottom="8dp"
+                        android:background="#0F"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
 
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_profile"/>
+                            android:src="@drawable/ic_profile" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Santiago Manchola"
-                            android:textColor="#FFFFFF"
                             android:layout_marginStart="4dp"
-                            android:shadowColor="#80000000"
+                            android:shadowColor="#88000000"
                             android:shadowDx="1.5"
                             android:shadowDy="1.5"
-                            android:shadowRadius="13.5" />
+                            android:shadowRadius="13.5"
+                            android:text="Santiago Manchola"
+                            android:textColor="#FFFFFF" />
                     </LinearLayout>
 
                     <!-- Contenedor de título y botón Ver debajo de la imagen -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_below="@id/iv_popular_image"
+                        android:orientation="vertical"
                         android:paddingTop="8dp">
 
                         <!-- Título del lugar -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="La Estación Centro Comercial"
-                            android:textStyle="bold"
+                            android:text="Centro Comercial La Estación"
                             android:textColor="#333333"
-                            android:textSize="14sp"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <!-- Íconos de usuarios debajo del título -->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
                             android:layout_marginTop="4dp"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/ic_profile"/>
+                                android:src="@drawable/ic_profile" />
+
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/ic_profile"/>
+                                android:src="@drawable/ic_profile" />
+
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/ic_profile"/>
+                                android:src="@drawable/ic_profile" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
                                 android:text="+15"
-                                android:textColor="#4CAF50"
-                                android:layout_marginStart="4dp"/>
+                                android:textColor="#4CAF50" />
                         </LinearLayout>
 
                         <!-- Botón Ver en la esquina inferior derecha -->
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:backgroundTint="#F6F6F6"
                             android:text="Ver"
-                            android:backgroundTint="#0Dfb0160"
                             android:textColor="#34C759"
-                            android:textSize="12sp"
-                            android:layout_gravity="end"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                 </RelativeLayout>
 
 
+                <RelativeLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/recent_item_background"
+                    android:padding="8dp">
+
+                    <!-- Imagen del lugar popular -->
+                    <ImageView
+                        android:id="@+id/iv_popular_image2"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/map2" />
+
+                    <!-- Corazón en la esquina superior derecha de la imagen -->
+                    <ImageView
+                        android:id="@+id/iv_heart2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/background_heart"
+                        android:onClick="toggleHeart"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_heart_outline" />
+
+                    <!-- Nombre de la persona sobre la imagen -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/iv_popular_image2"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="#00FFFFFF"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:shadowColor="#80000000"
+                            android:shadowDx="1.5"
+                            android:shadowDy="1.5"
+                            android:shadowRadius="13.5"
+                            android:text="Santiago Manchola"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- Contenedor de título y botón Ver debajo de la imagen -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_popular_image2"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp">
+
+                        <!-- Título del lugar -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Barrio La Pola"
+                            android:textColor="#333333"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <!-- Íconos de usuarios debajo del título -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_profile" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_profile" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_profile" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="+5"
+                                android:textColor="#4CAF50" />
+                        </LinearLayout>
+
+                        <!-- Botón Ver en la esquina inferior derecha -->
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:backgroundTint="#F6F6F6"
+                            android:text="Ver"
+                            android:textColor="#34C759"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/recent_item_background"
+                    android:padding="8dp">
+
+                    <!-- Imagen del lugar popular -->
+                    <ImageView
+                        android:id="@+id/iv_popular_image3"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/map2" />
+
+                    <!-- Corazón en la esquina superior derecha de la imagen -->
+                    <ImageView
+                        android:id="@+id/iv_heart3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/background_heart"
+                        android:onClick="toggleHeart"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_heart_outline" />
+
+                    <!-- Nombre de la persona sobre la imagen -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/iv_popular_image3"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="#00FFFFFF"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:shadowColor="#80000000"
+                            android:shadowDx="1.5"
+                            android:shadowDy="1.5"
+                            android:shadowRadius="13.5"
+                            android:text="Santiago Manchola"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- Contenedor de título y botón Ver debajo de la imagen -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_popular_image3"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp">
+
+                        <!-- Título del lugar -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Barrio El Jordan"
+                            android:textColor="#333333"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <!-- Íconos de usuarios debajo del título -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_profile" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_profile" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_profile" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="+10"
+                                android:textColor="#4CAF50" />
+                        </LinearLayout>
+
+                        <!-- Botón Ver en la esquina inferior derecha -->
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:backgroundTint="#F6F6F6"
+                            android:text="Ver"
+                            android:textColor="#34C759"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <!-- Puedes añadir más items en el mismo formato para otros lugares populares -->
 
@@ -522,54 +778,334 @@
         </HorizontalScrollView>
 
         <!-- Barra de navegación inferior con iconos separados uniformemente -->
+
+
+        <TextView
+            android:id="@+id/tv_Recomendaciones_para_ti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_horizontalpopulares"
+            android:layout_marginTop="24dp"
+            android:text="Recomendaciones Para Ti"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_ver_todo_recomendaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_Recomendaciones_para_ti"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:padding="8dp"
+            android:text="Ver Todo"
+            android:textColor="#6A1B9A" />
+
+        <ScrollView
+            android:id="@+id/tv_recomendaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_Recomendaciones_para_ti"
+            android:layout_marginTop="0dp"
+            android:padding="0dp">
+
+            <!-- Contenedor principal de los elementos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical">
+
+                <!-- Primer item de lugar recomendado -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/multi" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginStart="3dp"
+                            android:text="Multicentro Centro Comercial"
+                            android:textColor="#333333"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="11dp"
+                                android:src="@drawable/ic_location" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="Ibagué"
+                                android:textColor="#666666"
+                                android:textSize="17sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginTop="2dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginLeft="100dp"
+                                    android:layout_marginTop="0dp"
+                                    android:backgroundTint="#34C759"
+                                    android:text="Ver"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Segundo item de lugar recomendado -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/parque_deportivo" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginStart="3dp"
+                            android:text="Parque Deportivo"
+                            android:textColor="#333333"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="11dp"
+                                android:src="@drawable/ic_location" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="Ibagué"
+                                android:textColor="#666666"
+                                android:textSize="17sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginTop="2dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginLeft="100dp"
+                                    android:layout_marginTop="0dp"
+                                    android:backgroundTint="#34C759"
+                                    android:text="Ver"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tercer item de lugar recomendado -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/recent_item_background"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/plaza_bolivar" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginStart="3dp"
+                            android:text="Plaza Bolivar"
+                            android:textColor="#333333"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="2dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginBottom="11dp"
+                                android:src="@drawable/ic_location" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="Ibagué"
+                                android:textColor="#666666"
+                                android:textSize="17sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_marginTop="2dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginLeft="100dp"
+                                    android:layout_marginTop="0dp"
+                                    android:backgroundTint="#34C759"
+                                    android:text="Ver"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_below="@+id/tv_recomendaciones"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
+            android:layout_marginTop="-17dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="end"
+            android:orientation="horizontal"
             android:padding="16dp">
 
             <ImageView
                 android:id="@+id/icon_home"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="24dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_home"
                 android:backgroundTint="#00FF00"
-                android:onClick="goToHome"/>
+                android:onClick="goToHome"
+                android:src="@drawable/ic_home" />
 
             <ImageView
                 android:id="@+id/icon_rutas"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="24dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_location"
-                android:onClick="goToRutas"/>
+                android:onClick="goToRutas"
+                android:src="@drawable/ic_location" />
 
             <ImageView
                 android:id="@+id/icon_favoritos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_favorites"
-                android:onClick="goToFavoritos"/>
+                android:onClick="goToFavoritos"
+                android:src="@drawable/ic_favorites" />
 
             <ImageView
                 android:id="@+id/icon_configuracion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_settings"
-                android:onClick="goToConfiguracion"/>
+                android:onClick="goToConfiguracion"
+                android:src="@drawable/ic_settings" />
 
             <ImageView
                 android:id="@+id/icon_perfil"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_profile"
-                android:onClick="goToPerfil"/>
+                android:onClick="goToPerfil"
+                android:src="@drawable/ic_profile" />
         </LinearLayout>
+
     </RelativeLayout>
 </ScrollView>
