@@ -454,7 +454,7 @@
                         android:layout_alignBottom="@id/iv_popular_image"
                         android:layout_marginStart="8dp"
                         android:layout_marginBottom="8dp"
-                        android:background="#0F"
+                        android:background="#00FFFFFF"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="4dp">
