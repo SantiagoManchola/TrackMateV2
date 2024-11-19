@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.trackmate.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
+        navView.visibility = View.GONE // Ocultar la barra al inicio
+
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
@@ -37,6 +40,9 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
+    }
+    fun showBottomNavigation() {
+        binding.navView.visibility = View.VISIBLE
     }
 
     fun toggleHeart(view: View) {}

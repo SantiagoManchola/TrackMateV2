@@ -44,6 +44,13 @@ class NotificationsFragment : Fragment() {
         }
 
         binding.loginLink.setOnClickListener {
+
+            // Cambiar el estilo del texto a negrilla
+            binding.loginLink.setTypeface(null, android.graphics.Typeface.BOLD)
+
+            // Opcional: Cambiar el color del texto para resaltar
+            binding.loginLink.setTextColor(resources.getColor(R.color.purple_500, null))
+
             findNavController().navigate(R.id.navigation_dashboard)
         }
 
@@ -54,9 +61,15 @@ class NotificationsFragment : Fragment() {
 
         binding.buttonRegister.setOnClickListener {
 
-            val email : String = binding.emailInputRegister.text.toString()
-            val password : String = binding.passwordInputRegister.text.toString()
+            val email : String = binding.emailInputRegister.text.toString().trim()
+            val password : String = binding.passwordInputRegister.text.toString().trim()
 
+            if (email.isEmpty() || password.isEmpty()) {
+                // Muestra un mensaje de error al usuario, por ejemplo, con un Toast
+                Toast.makeText(requireContext(), "El correo electrónico y la contraseña no pueden estar vacíos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener // Agrega esta línea para detenerla ejecución
+
+            }
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     task->
                 if(task.isSuccessful)
@@ -67,7 +80,7 @@ class NotificationsFragment : Fragment() {
                 }
                 else
                 {
-                    val toast = Toast.makeText(context, "LA CONTRASEÑA DEBE TENER ALMENOS SEIS CARACTERES", Toast.LENGTH_SHORT)
+                    val toast = Toast.makeText(context, "LA CONTRASEÑA DEBE TENER AL MENOS SEIS CARACTERES", Toast.LENGTH_SHORT)
                     toast.show()
                 }
             }

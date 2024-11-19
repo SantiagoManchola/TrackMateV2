@@ -1,11 +1,11 @@
 package com.example.trackmate.ui.home
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -16,9 +16,12 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
+    private var mediaPlayer: MediaPlayer? = null//variable para la melodia
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +34,9 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.audiodef)
+        mediaPlayer?.isLooping = true
+        mediaPlayer?.start()
 
         // Lógica para el botón que redirige a DashboardFragment
         binding.buttonCalories.setOnClickListener {
@@ -47,6 +49,9 @@ class HomeFragment : Fragment() {
             it.postDelayed({
                 findNavController().navigate(R.id.navigation_dashboard)
             }, 200) // Asegúrate de que el retraso coincida con la duración de la animación
+            mediaPlayer?.stop()
+            mediaPlayer?.release()
+            mediaPlayer = null
         }
 
         return root
@@ -54,6 +59,8 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mediaPlayer?.release()
+        mediaPlayer = null
         _binding = null
     }
 }
