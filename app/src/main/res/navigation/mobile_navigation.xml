@@ -27,4 +27,28 @@
         android:name="com.example.trackmate.ui.homepage.HomepageFragment"
         android:label="@string/title_homepage"
         tools:layout="@layout/fragment_homepage" />
+
+    <fragment
+        android:id="@+id/navigation_routes"
+        android:name="com.example.trackmate.ui.routes.RoutesFragment"
+        android:label="@string/title_routes"
+        tools:layout="@layout/fragment_routes" />
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.example.trackmate.ui.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites" />
+
+    <fragment
+        android:id="@+id/navigation_configuration"
+        android:name="com.example.trackmate.ui.configuration.ConfigurationFragment"
+        android:label="@string/title_configuration"
+        tools:layout="@layout/fragment_configuration" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.trackmate.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

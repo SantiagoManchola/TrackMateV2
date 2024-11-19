@@ -5,6 +5,7 @@ package com.example.trackmate.ui.dashboard
     import com.example.trackmate.R
     import android.view.View
     import android.view.ViewGroup
+    import android.view.animation.AnimationUtils
     import android.widget.TextView
     import android.widget.Toast
     import androidx.fragment.app.Fragment
@@ -65,10 +66,17 @@ class DashboardFragment : Fragment() {
                 task->
                 if(task.isSuccessful)
                 {
+                    val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.button_scale)
+                    // Aplica la animación al botón
+                    it.startAnimation(animation)
+
                     val toast = Toast.makeText(context, "INICIO DE SESION CORRECTO", Toast.LENGTH_SHORT)
                     toast.show()
-                    findNavController().navigate(R.id.navigation_homepage)
+                    it.postDelayed({
+                        findNavController().navigate(R.id.navigation_homepage)
+                    }, 200)
                 }
+
                 else
                 {
                     val toast = Toast.makeText(context, "LOS DATOS SON INCORRECTOS", Toast.LENGTH_SHORT)

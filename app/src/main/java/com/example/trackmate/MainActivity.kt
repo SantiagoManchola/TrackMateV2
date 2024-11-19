@@ -23,15 +23,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val navView: BottomNavigationView = binding.navView
+
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         // Configuración de navegación
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_homepage
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_homepage, R.id.navigation_routes, R.id.navigation_favorites, R.id.navigation_configuration, R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        navView.setupWithNavController(navController)
+
     }
 
     fun toggleHeart(view: View) {}
