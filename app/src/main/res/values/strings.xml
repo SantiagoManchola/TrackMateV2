@@ -5,7 +5,7 @@
     <string name="title_notifications">Registrarse</string>
     <string name="title_homepage">Inicio</string>
     <string name="title_routes">Rutas</string>
-    <string name="title_favorites">Favoritas</string>
-    <string name="title_profile">Configuracion</string>
-    <string name="title_configuration">Perfil</string>
+    <string name="title_favorites">Favoritos</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_configuration">Configuracion</string>
 </resources>

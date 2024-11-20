@@ -1,9 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:padding="16dp"
     tools:context=".ui.profile.ProfileFragment">
 
@@ -12,25 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp">
 
-        <!-- Contenedor principal para los elementos -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <!-- Botón Regresar -->
-            <Button
-                android:id="@+id/btn_salir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="#65558F"
-                android:text="REGRESAR"
-                android:textColor="#FFFFFF" />
 
             <!-- Título -->
             <TextView
@@ -44,24 +34,33 @@
                 android:textStyle="bold"
                 android:gravity="center" />
 
-            <!-- Icono y texto Datos Personales -->
+            <!-- Imagen de usuario y texto -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
+                android:layout_marginBottom="16dp">
 
+                <!-- Imagen de usuario (clickeable) -->
                 <ImageView
-                    android:id="@+id/icon_person"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_person" />
+                    android:id="@+id/img_user"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/ic_person"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/border_edit_text"
+                    android:contentDescription="Imagen del usuario"
+                    android:clickable="true"
+                    android:focusable="true" />
 
+                <!-- Texto Datos Personales -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:gravity="center"
                     android:text="Datos Personales:"
                     android:textSize="16sp"
                     android:textColor="#333" />
@@ -83,7 +82,11 @@
                     android:layout_marginBottom="10dp"
                     android:hint="Nombre"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
 
                 <!-- Email -->
                 <EditText
@@ -93,56 +96,93 @@
                     android:layout_marginBottom="10dp"
                     android:hint="Email"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
 
                 <!-- Celular -->
                 <EditText
                     android:id="@+id/et_celular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:hint="Celular"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"/>
                 <!-- Genero -->
                 <EditText
                     android:id="@+id/et_genero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:hint="Genero"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
                 <!-- Deporte favorito -->
                 <EditText
                     android:id="@+id/et_deporte_favorito"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:hint="Deporte Favorito"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
                 <!-- Altura -->
                 <EditText
                     android:id="@+id/et_altura"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:hint="Altura"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"/>
                 <!-- Peso -->
                 <EditText
                     android:id="@+id/et_peso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:hint="Peso"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"/>
                 <!-- Ciudad -->
                 <EditText
                     android:id="@+id/et_ciudad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:hint="Ciudad"
                     android:enabled="false"
-                    android:backgroundTint="#000" />
+                    android:background="@drawable/border_edit_text"
+                    android:backgroundTint="#000"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"/>
 
             </LinearLayout>
 
