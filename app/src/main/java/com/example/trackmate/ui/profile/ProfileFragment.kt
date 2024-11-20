@@ -14,6 +14,11 @@ class ProfileFragment : Fragment() {
     private lateinit var etNombre: EditText
     private lateinit var etEmail: EditText
     private lateinit var etCelular: EditText
+    private lateinit var etDeporteFavorito: EditText
+    private lateinit var etAltura: EditText
+    private lateinit var etPeso: EditText
+    private lateinit var etCiudad: EditText
+    private lateinit var etGenero: EditText
     private lateinit var btnEditar: Button
     private lateinit var btnGuardar: Button
     private lateinit var btnCerrarSesion: Button
@@ -28,6 +33,11 @@ class ProfileFragment : Fragment() {
         etNombre = view.findViewById(R.id.et_nombre)
         etEmail = view.findViewById(R.id.et_email)
         etCelular = view.findViewById(R.id.et_celular)
+        etDeporteFavorito = view.findViewById(R.id.et_deporte_favorito)
+        etAltura = view.findViewById(R.id.et_altura)
+        etPeso = view.findViewById(R.id.et_peso)
+        etCiudad = view.findViewById(R.id.et_ciudad)
+        etGenero = view.findViewById(R.id.et_genero)
         btnEditar = view.findViewById(R.id.btn_editar)
         btnGuardar = view.findViewById(R.id.btn_guardar)
         btnCerrarSesion = view.findViewById(R.id.btn_cerrar_sesion)
@@ -50,6 +60,11 @@ class ProfileFragment : Fragment() {
         etNombre.isEnabled = editable
         etEmail.isEnabled = editable
         etCelular.isEnabled = editable
+        etDeporteFavorito.isEnabled = editable
+        etAltura.isEnabled = editable
+        etPeso.isEnabled = editable
+        etCiudad.isEnabled = editable
+        etGenero.isEnabled = editable
 
         btnEditar.visibility = if (editable) View.GONE else View.VISIBLE
         btnGuardar.visibility = if (editable) View.VISIBLE else View.GONE

@@ -103,6 +103,47 @@
                     android:hint="Celular"
                     android:enabled="false"
                     android:backgroundTint="#000" />
+                <!-- Genero -->
+                <EditText
+                    android:id="@+id/et_genero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Genero"
+                    android:enabled="false"
+                    android:backgroundTint="#000" />
+                <!-- Deporte favorito -->
+                <EditText
+                    android:id="@+id/et_deporte_favorito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Deporte Favorito"
+                    android:enabled="false"
+                    android:backgroundTint="#000" />
+                <!-- Altura -->
+                <EditText
+                    android:id="@+id/et_altura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Altura"
+                    android:enabled="false"
+                    android:backgroundTint="#000" />
+                <!-- Peso -->
+                <EditText
+                    android:id="@+id/et_peso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Peso"
+                    android:enabled="false"
+                    android:backgroundTint="#000" />
+                <!-- Ciudad -->
+                <EditText
+                    android:id="@+id/et_ciudad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ciudad"
+                    android:enabled="false"
+                    android:backgroundTint="#000" />
+
             </LinearLayout>
 
             <!-- Botón Editar -->
