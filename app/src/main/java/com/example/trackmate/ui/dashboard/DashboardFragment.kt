@@ -15,7 +15,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.example.trackmate.MainActivity
-
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DashboardFragment : Fragment() {
 
@@ -75,23 +75,31 @@ class DashboardFragment : Fragment() {
             }
 
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task->
-                if(task.isSuccessful)
-                {
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    val uid = user?.uid
+                    val db = FirebaseFirestore.getInstance()
+
+                    // Recupera el documento del usuario desde Firestore
+                    db.collection("users")
+                        .document(uid ?: "")
+                        .get()
+                        .addOnFailureListener { e ->
+                            Toast.makeText(context, "Error al recuperar el correo desde Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+
                     val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.button_scale)
-                    // Aplica la animación al botón
                     it.startAnimation(animation)
 
-                    val toast = Toast.makeText(context, "INICIO DE SESION CORRECTO", Toast.LENGTH_SHORT)
-                    toast.show()
+                    Toast.makeText(context, "Inicio de sesion correcto", Toast.LENGTH_SHORT).show()
 
-                    // Mostrar barra de navegación
                     (requireActivity() as MainActivity).showBottomNavigation()
 
                     it.postDelayed({
                         findNavController().navigate(R.id.navigation_homepage)
                     }, 50)
                 } else{
-                    val toast = Toast.makeText(context, "LOS DATOS SON INCORRECTOS", Toast.LENGTH_SHORT)
+                    val toast = Toast.makeText(context, "Los datos son incorrectos", Toast.LENGTH_SHORT)
                     toast.show()
                 }
             }
