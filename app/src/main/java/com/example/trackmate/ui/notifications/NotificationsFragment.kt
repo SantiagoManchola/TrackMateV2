@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +13,7 @@ import com.example.trackmate.databinding.FragmentNotificationsBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class NotificationsFragment : Fragment() {
 
@@ -72,15 +72,32 @@ class NotificationsFragment : Fragment() {
             }
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     task->
-                if(task.isSuccessful)
-                {
-                    val toast = Toast.makeText(context, "INICIO DE SESION CORRECTO", Toast.LENGTH_SHORT)
-                    toast.show()
-                    findNavController().navigate(R.id.navigation_dashboard)
+                if (task.isSuccessful) {
+                    // Obtén el usuario recién creado
+                    val user = auth.currentUser
+                    val uid = user?.uid
+                    val db = FirebaseFirestore.getInstance()
+
+                    // Crea un nuevo documento con el correo del usuario
+                    val userMap = hashMapOf(
+                        "email" to email
+                    )
+
+                    // Agrega el documento al collection "users"
+                    db.collection("users")
+                        .document(uid ?: "")
+                        .set(userMap)
+                        .addOnSuccessListener {
+                            Toast.makeText(context, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.navigation_dashboard)
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(context, "Error al guardar el correo en Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
                 }
                 else
                 {
-                    val toast = Toast.makeText(context, "LA CONTRASEÑA DEBE TENER AL MENOS SEIS CARACTERES", Toast.LENGTH_SHORT)
+                    val toast = Toast.makeText(context, "La contraseña debe tener al menos seis caracteres", Toast.LENGTH_SHORT)
                     toast.show()
                 }
             }
