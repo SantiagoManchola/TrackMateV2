@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:paddingBottom="50dp"
+    android:scrollbars="none"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,70 +29,181 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="26dp"
             android:text="Cuenta"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#333" />
 
-        <!-- Desplegable 1: Contraseña y Seguridad -->
+        <!-- LinearLayout que contiene las secciones -->
         <LinearLayout
-            android:id="@+id/section_password_security"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp">
+            android:orientation="vertical">
 
-            <!-- Título -->
+            <!-- Primera sección: Contraseña y Seguridad -->
             <LinearLayout
+                android:id="@+id/section_password_security"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:background="@drawable/border_edit_text"
-                android:clickable="true"
-                android:focusable="true">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/title_password_security"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Contraseña y Seguridad"
-                    android:textSize="16sp"
-                    android:textColor="#333" />
+                    android:text="Contraseña y seguridad"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
-                <ImageView
-                    android:id="@+id/arrow_password_security"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/abajo" />
             </LinearLayout>
 
-            <!-- Contenido (Desplegable) -->
             <LinearLayout
                 android:id="@+id/content_password_security"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone"
-                android:padding="10dp">
+                android:paddingLeft="26dp"
+                android:layout_marginTop="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cambiar contraseña" />
+                    android:text="Opción 1 - Seguridad" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Seguridad en dos pasos" />
+                    android:text="Opción 2 - Seguridad" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 3 - Seguridad" />
+            </LinearLayout>
+
+            <!-- Segunda sección: Datos personales -->
+            <LinearLayout
+                android:id="@+id/section_personal_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+
+                <TextView
+                    android:id="@+id/title_personal_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos personales"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/content_personal_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingLeft="26dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 1 - Datos" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 2 - Datos" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 3 - Datos" />
+            </LinearLayout>
+
+            <!-- Tercera sección: Tu actividad -->
+            <LinearLayout
+                android:id="@+id/section_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/title_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tu actividad"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/content_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingLeft="26dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 1 - Actividad" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 2 - Actividad" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 3 - Actividad" />
+            </LinearLayout>
+
+            <!-- Cuarta sección: Privacidad -->
+            <LinearLayout
+                android:id="@+id/section_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/title_privacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacidad"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/content_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingLeft="26dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 1 - Privacidad" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 2 - Privacidad" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Opción 3 - Privacidad" />
             </LinearLayout>
         </LinearLayout>
-
-        <!-- Repite el bloque anterior para las demás secciones -->
-        <!-- Desplegable 2: Datos Personales -->
-        <!-- Desplegable 3: Tu Actividad -->
-        <!-- Desplegable 4: Privacidad -->
-
     </LinearLayout>
 </ScrollView>
