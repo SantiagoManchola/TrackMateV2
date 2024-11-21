@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingBottom="24dp"
+    android:scrollbars="none"
+    android:clipToPadding="false"
     android:fillViewport="true">
 
     <RelativeLayout
@@ -17,7 +19,6 @@
             android:id="@+id/ubicacion_busqueda_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn_salir"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:orientation="vertical"
@@ -1031,60 +1032,5 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_recomendaciones"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="-17dp"
-            android:layout_marginBottom="0dp"
-            android:gravity="end"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/icon_home"
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:backgroundTint="#00FF00"
-                android:onClick="goToHome"
-                android:src="@drawable/ic_home" />
-
-            <ImageView
-                android:id="@+id/icon_rutas"
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:onClick="goToRutas"
-                android:src="@drawable/ic_location" />
-
-            <ImageView
-                android:id="@+id/icon_favoritos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="goToFavoritos"
-                android:src="@drawable/ic_favorites" />
-
-            <ImageView
-                android:id="@+id/icon_configuracion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="goToConfiguracion"
-                android:src="@drawable/ic_settings" />
-
-            <ImageView
-                android:id="@+id/icon_perfil"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="goToPerfil"
-                android:src="@drawable/ic_profile" />
-        </LinearLayout>
-
     </RelativeLayout>
 </ScrollView>
