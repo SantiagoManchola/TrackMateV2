@@ -15,6 +15,8 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.trackmate.R
 import java.io.IOException
+import android.app.AlertDialog
+import androidx.navigation.fragment.findNavController
 
 class ProfileFragment : Fragment() {
 
@@ -69,6 +71,11 @@ class ProfileFragment : Fragment() {
             openGallery()
         }
 
+        // Configurar el botón Cerrar Sesión
+        btnCerrarSesion.setOnClickListener {
+            mostrarDialogCerrarSesion()
+        }
+
         return view
     }
 
@@ -107,5 +114,29 @@ class ProfileFragment : Fragment() {
                 e.printStackTrace()
             }
         }
+    }
+
+    // Método para mostrar el Dialog de confirmación de cierre de sesión
+    private fun mostrarDialogCerrarSesion() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Cerrar sesión")
+        builder.setMessage("¿Estás seguro que deseas cerrar sesión?")
+
+        builder.setPositiveButton("Sí") { _, _ ->
+            // Aquí puedes agregar la lógica para cerrar sesión
+            cerrarSesion()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss() // Cerrar el diálogo
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    // Método para cerrar sesión
+    private fun cerrarSesion() {
+        // Aquí se puede limpiar la sesión, eliminar tokens, o navegar a otra pantalla
+        findNavController().navigate(R.id.navigation_home)
     }
 }
