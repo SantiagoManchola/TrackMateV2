@@ -17,6 +17,8 @@ import com.example.trackmate.R
 import java.io.IOException
 import android.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.example.trackmate.MainActivity
 
 class ProfileFragment : Fragment() {
 
@@ -32,6 +34,7 @@ class ProfileFragment : Fragment() {
     private lateinit var btnGuardar: Button
     private lateinit var btnCerrarSesion: Button
     private lateinit var imgUser: ImageView
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private val PICK_IMAGE_REQUEST = 1 // Código de solicitud para abrir la galería
 
@@ -136,7 +139,13 @@ class ProfileFragment : Fragment() {
 
     // Método para cerrar sesión
     private fun cerrarSesion() {
-        // Aquí se puede limpiar la sesión, eliminar tokens, o navegar a otra pantalla
+        // Cerrar sesión de Firebase
+        auth.signOut()
+
+        // Ocultar barra de navegación
+        (requireActivity() as MainActivity).hideBottomNavigation()
+
+        // Navegar a la pantalla de login o inicio
         findNavController().navigate(R.id.navigation_home)
     }
 }

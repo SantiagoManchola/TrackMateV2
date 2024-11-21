@@ -1,20 +1,20 @@
 package com.example.trackmate.ui.dashboard
 
-    import android.os.Bundle
-    import android.view.LayoutInflater
-    import com.example.trackmate.R
-    import android.view.View
-    import android.view.ViewGroup
-    import android.view.animation.AnimationUtils
-    import android.widget.Toast
-    import androidx.fragment.app.Fragment
-    import androidx.lifecycle.ViewModelProvider
-    import androidx.navigation.fragment.findNavController
-    import com.example.trackmate.databinding.FragmentDashboardBinding
-    import com.google.firebase.Firebase
-    import com.google.firebase.auth.FirebaseAuth
-    import com.google.firebase.auth.auth
-    import com.example.trackmate.MainActivity
+import android.os.Bundle
+import android.view.LayoutInflater
+import com.example.trackmate.R
+import android.view.View
+import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.trackmate.databinding.FragmentDashboardBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.example.trackmate.MainActivity
 
 
 class DashboardFragment : Fragment() {
@@ -65,16 +65,16 @@ class DashboardFragment : Fragment() {
 
 
         binding.buttonLogin.setOnClickListener {
-
             val email : String = binding.userInputLogin.text.toString().trim()
             val password : String = binding.passwordInputLogin.text.toString().trim()
+
             if (email.isEmpty() || password.isEmpty()) {
                 // Muestra un mensaje de error al usuario
                 Toast.makeText(requireContext(), "No puedes iniciar sesión con datos sin llenar", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener // Detiene la ejecución del listener
             }
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                task->
+
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task->
                 if(task.isSuccessful)
                 {
                     val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.button_scale)
@@ -90,10 +90,7 @@ class DashboardFragment : Fragment() {
                     it.postDelayed({
                         findNavController().navigate(R.id.navigation_homepage)
                     }, 50)
-                }
-
-                else
-                {
+                } else{
                     val toast = Toast.makeText(context, "LOS DATOS SON INCORRECTOS", Toast.LENGTH_SHORT)
                     toast.show()
                 }

@@ -11,13 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackmate.R
 import com.example.trackmate.databinding.FragmentHomeBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
     private var mediaPlayer: MediaPlayer? = null//variable para la melodia
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -28,9 +27,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
+        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -38,20 +35,27 @@ class HomeFragment : Fragment() {
         mediaPlayer?.isLooping = true
         mediaPlayer?.start()
 
-        // Lógica para el botón que redirige a DashboardFragment
+        // Lógica para el botón que redirige según la sesión
         binding.buttonCalories.setOnClickListener {
             // Carga la animación
             val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.button_scale)
             // Aplica la animación al botón
             it.startAnimation(animation)
 
-            // Navega a la siguiente pantalla después de un pequeño retraso
+            // Verifica la sesión y navega
             it.postDelayed({
-                findNavController().navigate(R.id.navigation_dashboard)
+                if (FirebaseAuth.getInstance().currentUser != null) {
+                    // Si hay una sesión iniciada
+                    findNavController().navigate(R.id.navigation_homepage)
+                } else {
+                    // Si no hay sesión, redirige a Dashboard
+                    findNavController().navigate(R.id.navigation_dashboard)
+                }
+                // Detiene y libera el reproductor
+                mediaPlayer?.stop()
+                mediaPlayer?.release()
+                mediaPlayer = null
             }, 200) // Asegúrate de que el retraso coincida con la duración de la animación
-            mediaPlayer?.stop()
-            mediaPlayer?.release()
-            mediaPlayer = null
         }
 
         return root
