@@ -1,6 +1,7 @@
 package com.example.trackmate.ui.profile
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -13,12 +14,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.example.trackmate.R
-import java.io.IOException
-import android.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
+import com.example.trackmate.R
 import com.example.trackmate.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import android.content.Context
 
 class ProfileFragment : Fragment() {
 
@@ -34,9 +35,15 @@ class ProfileFragment : Fragment() {
     private lateinit var btnGuardar: Button
     private lateinit var btnCerrarSesion: Button
     private lateinit var imgUser: ImageView
+
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    private val userId: String?
+        get() = auth.currentUser?.uid
 
     private val PICK_IMAGE_REQUEST = 1 // Código de solicitud para abrir la galería
+    private val REQUEST_IMAGE_CAPTURE = 2 // Código para tomar una foto
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,28 +63,24 @@ class ProfileFragment : Fragment() {
         btnEditar = view.findViewById(R.id.btn_editar)
         btnGuardar = view.findViewById(R.id.btn_guardar)
         btnCerrarSesion = view.findViewById(R.id.btn_cerrar_sesion)
-        imgUser = view.findViewById(R.id.img_user) // Imagen del usuario
+        imgUser = view.findViewById(R.id.img_user)
+
+        // Cargar datos del usuario desde Firestore
+        loadUserData()
 
         // Configurar el botón Editar
-        btnEditar.setOnClickListener {
-            toggleEditMode(true)
-        }
+        btnEditar.setOnClickListener { toggleEditMode(true) }
 
         // Configurar el botón Guardar
-        btnGuardar.setOnClickListener {
-            // Guardar cambios
-            toggleEditMode(false)
-        }
+        btnGuardar.setOnClickListener { saveUserData() }
 
         // Configurar clic en la imagen para cambiarla
         imgUser.setOnClickListener {
-            openGallery()
+            showImageSourceDialog()
         }
 
         // Configurar el botón Cerrar Sesión
-        btnCerrarSesion.setOnClickListener {
-            mostrarDialogCerrarSesion()
-        }
+        btnCerrarSesion.setOnClickListener { mostrarDialogCerrarSesion() }
 
         return view
     }
@@ -96,6 +99,63 @@ class ProfileFragment : Fragment() {
         btnGuardar.visibility = if (editable) View.VISIBLE else View.GONE
     }
 
+    private fun loadUserData() {
+        userId?.let { id ->
+            firestore.collection("users").document(id).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        etNombre.setText(document.getString("name"))
+                        etEmail.setText(document.getString("email"))
+                        etCelular.setText(document.getString("phone"))
+                        etDeporteFavorito.setText(document.getString("favoriteSport"))
+                        etAltura.setText(document.getString("height"))
+                        etPeso.setText(document.getString("weight"))
+                        etCiudad.setText(document.getString("city"))
+                        etGenero.setText(document.getString("gender"))
+                    }
+                }
+                .addOnFailureListener { e ->
+                    // Manejar errores
+                }
+        }
+    }
+
+    private fun saveUserData() {
+        val userMap = hashMapOf(
+            "name" to etNombre.text.toString(),
+            "email" to etEmail.text.toString(),
+            "phone" to etCelular.text.toString(),
+            "favoriteSport" to etDeporteFavorito.text.toString(),
+            "height" to etAltura.text.toString(),
+            "weight" to etPeso.text.toString(),
+            "city" to etCiudad.text.toString(),
+            "gender" to etGenero.text.toString()
+        )
+
+        userId?.let { id ->
+            firestore.collection("users").document(id).set(userMap)
+                .addOnSuccessListener {
+                    toggleEditMode(false)
+                }
+                .addOnFailureListener { e ->
+                    // Manejar errores
+                }
+        }
+    }
+
+    private fun showImageSourceDialog() {
+        val options = arrayOf("Tomar foto", "Seleccionar desde galería")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Seleccionar imagen")
+        builder.setItems(options) { _, which ->
+            when (which) {
+                0 -> openCamera() // Opción para tomar foto
+                1 -> openGallery() // Opción para seleccionar desde galería
+            }
+        }
+        builder.show()
+    }
+
     // Abre la galería del dispositivo
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -103,18 +163,36 @@ class ProfileFragment : Fragment() {
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
     }
 
-    // Maneja el resultado de la selección de imagen
+    // Abre la cámara frontal del dispositivo
+    private fun openCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+    }
+
+    // Maneja el resultado de la selección de imagen o foto
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            val imageUri: Uri? = data.data
-            try {
-                // Convierte la URI en un Bitmap y lo establece en el ImageView
-                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, imageUri)
-                imgUser.setImageBitmap(bitmap)
-            } catch (e: IOException) {
-                e.printStackTrace()
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                PICK_IMAGE_REQUEST -> {
+                    val imageUri: Uri? = data?.data
+                    if (imageUri != null) {
+                        val sharedPref = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+                        with(sharedPref.edit()) {
+                            putString("profile_image", imageUri.toString())
+                            apply()
+                        }
+                        imgUser.setImageURI(imageUri)
+                    }
+                }
+                REQUEST_IMAGE_CAPTURE -> {
+                    val photo: Bitmap? = data?.extras?.get("data") as? Bitmap
+                    if (photo != null) {
+                        // Guarda la imagen en el almacenamiento local o Firebase si es necesario
+                        imgUser.setImageBitmap(photo)
+                    }
+                }
             }
         }
     }
