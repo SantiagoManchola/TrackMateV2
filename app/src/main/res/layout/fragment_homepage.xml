@@ -187,7 +187,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="8dp"
-                        android:src="@drawable/map" />
+                        android:src="@drawable/ruta_unibague" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -531,7 +531,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/map2" />
+                        android:src="@drawable/ruta_parque" />
 
                     <!-- Corazón en la esquina superior derecha de la imagen -->
                     <ImageView
@@ -814,62 +814,92 @@
                         android:src="@drawable/multi" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginStart="3dp"
-                            android:text="Multicentro Centro Comercial"
-                            android:textColor="#333333"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="0dp"
+                                android:layout_marginRight="0dp"
+                                android:text="Multicentro Centro Comercial"
+                                android:textColor="#333333"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_heart4"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="0dp"
+                                    android:background="@drawable/background_heart"
+                                    android:onClick="toggleHeart"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_heart_outline" />
+                            </RelativeLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="bottom"
-                            android:layout_marginTop="2dp"
                             android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:layout_marginBottom="11dp"
-                                android:src="@drawable/ic_location" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:layout_marginStart="2dp"
-                                android:layout_marginBottom="5dp"
-                                android:text="Ibagué"
-                                android:textColor="#666666"
-                                android:textSize="17sp" />
-
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="bottom"
                                 android:layout_marginTop="2dp"
                                 android:orientation="horizontal">
 
-                                <Button
+                                <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom"
-                                    android:layout_marginLeft="100dp"
-                                    android:layout_marginTop="0dp"
-                                    android:backgroundTint="#34C759"
-                                    android:text="Ver"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="12sp" />
+                                    android:layout_marginBottom="11dp"
+                                    android:src="@drawable/ic_location" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginStart="2dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Ibagué"
+                                    android:textColor="#666666"
+                                    android:textSize="17sp" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginTop="2dp"
+                                    android:orientation="horizontal">
+
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="bottom"
+                                        android:layout_marginLeft="100dp"
+                                        android:layout_marginTop="0dp"
+                                        android:backgroundTint="#34C759"
+                                        android:text="Ver"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -896,16 +926,39 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginStart="3dp"
-                            android:text="Parque Deportivo"
-                            android:textColor="#333333"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginStart="3dp"
+                                android:text="Parque Deportivo"
+                                android:textColor="#333333"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_heart5"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="0dp"
+                                    android:background="@drawable/background_heart"
+                                    android:onClick="toggleHeart"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_heart_outline" />
+                            </RelativeLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -974,16 +1027,39 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginStart="3dp"
-                            android:text="Plaza Bolivar"
-                            android:textColor="#333333"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginStart="3dp"
+                                android:text="Plaza Bolivar"
+                                android:textColor="#333333"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_heart6"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="0dp"
+                                    android:background="@drawable/background_heart"
+                                    android:onClick="toggleHeart"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_heart_outline" />
+                            </RelativeLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"

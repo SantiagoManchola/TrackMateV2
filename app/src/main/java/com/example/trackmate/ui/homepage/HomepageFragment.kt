@@ -20,6 +20,9 @@ class HomepageFragment : Fragment() {
         val heartIcon: ImageView = view.findViewById(R.id.iv_heart)
         val heartIcon2: ImageView = view.findViewById(R.id.iv_heart2)
         val heartIcon3: ImageView = view.findViewById(R.id.iv_heart3)
+        val heartIcon4: ImageView = view.findViewById(R.id.iv_heart4)
+        val heartIcon5: ImageView = view.findViewById(R.id.iv_heart5)
+        val heartIcon6: ImageView = view.findViewById(R.id.iv_heart6)
 
         // Asigna el listener de clic para cambiar el ícono
         heartIcon.setOnClickListener {
@@ -29,6 +32,15 @@ class HomepageFragment : Fragment() {
             toggleHeart(it)
         }
         heartIcon3.setOnClickListener {
+            toggleHeart(it)
+        }
+        heartIcon4.setOnClickListener {
+            toggleHeart(it)
+        }
+        heartIcon5.setOnClickListener {
+            toggleHeart(it)
+        }
+        heartIcon6.setOnClickListener {
             toggleHeart(it)
         }
 
