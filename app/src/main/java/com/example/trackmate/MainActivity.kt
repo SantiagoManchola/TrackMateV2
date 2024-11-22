@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             showBottomNavigation()
         } else {
             // Redirigir al login si no hay sesión activa
-            findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.navigation_dashboard)
+            findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.navigation_home)
         }
     }
 
